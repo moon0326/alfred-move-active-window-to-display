@@ -1,35 +1,25 @@
 #!/usr/bin/env osascript -l JavaScript
-
-/**
- * Move currently active window to given {query} display.
- */
-function run(query) {
+function run(path) {
+	ObjC.import('stdlib');
+	const menuPatterns = [
+		'로 이동',
+		'Move to'
+	];
 	const activeWindow = Application('System Events').processes.whose({ frontmost: {'=': true } })[0];
 	const menus = activeWindow.menuBars[0].menus
 	const menuItems = menus[menus.length - 2].menuItems;
-	const items = [];
-	const titles = String(menuItems.name()).split(',');
-	let separatorCounter = 0;
-	/**
-	 * Menu items under `Windows` are separated by a separator.
-	 * We're only interested in the 2nd group.
-	 */
-	for (let i in titles) {
-		const title = titles[i];
-		if (title === '') {
-			separatorCounter++;
-			if (separatorCounter === 2) {
-				break;
+	const items = String(menuItems.name()).split(',').filter((item) => {
+		for (let i in menuPatterns) {
+			if (item.indexOf(menuPatterns[i]) !== -1) {
+				return true;
 			}
 		}
-
-		if (separatorCounter === 1) {
-			items.push({
-				title: title,
-				arg: title
-			})
-		};
-	}
+	}).map((item) => {
+		return {
+			title: item,
+			arg: item
+		}
+	})
 
 	return JSON.stringify({items});
 }

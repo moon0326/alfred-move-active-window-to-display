@@ -1,5 +1,8 @@
 #!/usr/bin/env osascript -l JavaScript
 
+/**
+ * Move currently active window to given {query} display.
+ */
 function run(query) {
 	const system = Application("System Events");
 	const activeWindow = system.processes.whose({ frontmost: {'=': true } })[0];

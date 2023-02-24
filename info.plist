@@ -23,7 +23,7 @@
 		</array>
 	</dict>
 	<key>createdby</key>
-	<string>Moon Kyong</string>
+	<string>MK</string>
 	<key>description</key>
 	<string></string>
 	<key>disabled</key>
@@ -106,7 +106,7 @@
 		</dict>
 	</array>
 	<key>readme</key>
-	<string>333</string>
+	<string></string>
 	<key>uidata</key>
 	<dict>
 		<key>30E691A2-CA04-4E14-9309-2BB880188579</key>
@@ -124,6 +124,10 @@
 			<integer>95</integer>
 		</dict>
 	</dict>
+	<key>variablesdontexport</key>
+	<array/>
+	<key>version</key>
+	<string></string>
 	<key>webaddress</key>
 	<string></string>
 </dict>
